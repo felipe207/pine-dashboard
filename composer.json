@@ -28,7 +28,7 @@
         "php": "^7.3",
         "barryvdh/laravel-debugbar": "^3.2",
         "laravelcollective/html": "^6.2.1",
-        "brediweb/imagemupload": "dev-main",
+        "brediweb/imagemupload-8": "dev-main",
         "arcanedev/log-viewer": "^8.2.0"
     }
 }
