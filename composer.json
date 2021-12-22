@@ -1,0 +1,34 @@
+{
+    "name": "brediweb/bredi-dashboard-8",
+    "description": "Pacote dashboard para laravel 8",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ilvini",
+            "email": "ilvini.pitter@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Brediweb\\BrediDashboard8\\Providers\\BrediDashboardServiceProvider",
+                "Brediweb\\BrediDashboard8\\Providers\\BrediColorAdminServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Brediweb\\BrediDashboard8\\": "src/"
+        },
+        "files": ["src/Http/Helper/Helper.php"]
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.3",
+        "barryvdh/laravel-debugbar": "^3.2",
+        "laravelcollective/html": "^6.2.1",
+        "brediweb/imagemupload": "dev-main",
+        "arcanedev/log-viewer": "^8.2.0"
+    }
+}
