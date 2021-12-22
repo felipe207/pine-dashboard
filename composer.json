@@ -30,5 +30,11 @@
         "laravelcollective/html": "^6.2.1",
         "brediweb/imagemupload-8": "dev-main",
         "arcanedev/log-viewer": "^8.2.0"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/brediweb/imagem-upload-8"
+        }
+    ]
 }
