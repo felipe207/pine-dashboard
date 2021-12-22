@@ -5,16 +5,16 @@ namespace App\Http\Controllers\Controle;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Brediweb\ImagemUpload\ImagemUpload;
+use brediweb\ImagemUpload8\ImagemUpload;
 use App\Models\Config;
 
 class ConfigController extends Controller
 {
     public function __construct()
     {
-        // $this->vendor = config('bredidashboard.templates')[config('bredidashboard.default')];
-        // $this->background_image = config('bredidashboard.background_image');
-        // $this->logo = config('bredidashboard.logo');
+        // $this->vendor = config('BrediDashboard.templates')[config('BrediDashboard.default')];
+        // $this->background_image = config('BrediDashboard.background_image');
+        // $this->logo = config('BrediDashboard.logo');
     }
     /**
      * Display a listing of the resource.

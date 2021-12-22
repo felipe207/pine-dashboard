@@ -1,5 +1,5 @@
 <?php
-namespace Brediweb\BrediDashboard\Trait;
+namespace Brediweb\BrediDashboard8\Trait;
 use Vinkla\Hashids\Facades\Hashids;
 /**
  * trait for create hash id in tables

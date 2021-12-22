@@ -28,6 +28,7 @@
         "php": "^7.3",
         "barryvdh/laravel-debugbar": "^3.2",
         "laravelcollective/html": "^6.2.1",
-        "arcanedev/log-viewer": "^8.2.0"
+        "arcanedev/log-viewer": "^8.2.0",
+        "vinkla/hashids": "^9.1.0"
     }
 }

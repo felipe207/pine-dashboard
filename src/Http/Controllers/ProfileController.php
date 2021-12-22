@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
-use Brediweb\ImagemUpload\ImagemUpload;
+use brediweb\ImagemUpload8\ImagemUpload;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
     public function __construct()
     {
-        // $this->vendor = config('bredidashboard.templates')[config('bredidashboard.default')];
+        // $this->vendor = config('BrediDashboard.templates')[config('BrediDashboard.default')];
 
         $this->destino = storage_path() . '/app/public/user/';
         $this->resolucao = ['p' => ['h' => 150, 'w' => 150], 'm' => ['h' => 500, 'w' => 500]];

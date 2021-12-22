@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediColorAdmin\Providers;
+namespace Brediweb\BrediDashboard8\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -12,7 +12,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Brediweb\BrediColorAdmin\Http\Controllers';
+    protected $namespace = 'Brediweb\BrediDashboard8\Http\Controllers';
 
     /**
      * Called before routes are registered.

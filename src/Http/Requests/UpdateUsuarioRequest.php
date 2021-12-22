@@ -21,7 +21,7 @@ class UpdateUsuarioRequest extends FormRequest
         // if (request()->get('password'))
         // {
         //     $rules = array_merge($rules, [
-        //         'password' => config('bredidashboard.user.password_validation')
+        //         'password' => config('BrediDashboard.user.password_validation')
         //         ]
         //     );
         // }

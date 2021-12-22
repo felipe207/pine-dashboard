@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediColorAdmin\Providers;
+namespace Brediweb\BrediDashboard8\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
@@ -36,9 +36,9 @@ class BrediColorAdminServiceProvider extends ServiceProvider
         $this->app->booted(function() {
             try {
                 if (Schema::hasTable('configs')) {
-                    $config = (new \Brediweb\BrediDashboard\Repositories\BrediDashboardRepository)->getConfig();
-                    // $vendor = (!empty(config('bredidashboard.templates')[config('bredidashboard.default')])) ? config('bredidashboard.templates')[config('bredidashboard.default')] : 'bredicoloradmin';
-                    $vendor = config('bredidashboard.templates')[config('bredidashboard.default')];
+                    $config = (new \Brediweb\BrediDashboard8\Repositories\BrediDashboardRepository)->getConfig();
+                    // $vendor = (!empty(config('BrediDashboard.templates')[config('BrediDashboard.default')])) ? config('BrediDashboard.templates')[config('BrediDashboard.default')] : 'bredicoloradmin';
+                    $vendor = config('BrediDashboard.templates')[config('BrediDashboard.default')];
                     $includes = [
                         "{$vendor['name']}::layouts.*",
                         "{$vendor['name']}::includes.header",

@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediDashboard\Providers;
+namespace Brediweb\BrediDashboard8\Providers;
 
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -56,13 +56,13 @@ class BrediDashboardServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__ . '/../Config/config.php' => config_path('bredidashboard.php'),
+            __DIR__ . '/../Config/config.php' => config_path('BrediDashboard.php'),
         ], 'config');
         $this->publishes([
-            __DIR__ . '/../Config/config.php' => config_path('bredidashboard.php'),
-        ], 'bredidashboard-config');
+            __DIR__ . '/../Config/config.php' => config_path('BrediDashboard.php'),
+        ], 'BrediDashboard-config');
         $this->mergeConfigFrom(
-            __DIR__ . '/../Config/config.php', 'bredidashboard'
+            __DIR__ . '/../Config/config.php', 'BrediDashboard'
         );
     }
 
@@ -73,7 +73,7 @@ class BrediDashboardServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $viewPath = resource_path('views/modules/bredidashboard');
+        $viewPath = resource_path('views/modules/BrediDashboard');
 
         $sourcePath = __DIR__ . '/../Resources/views';
 
@@ -82,8 +82,8 @@ class BrediDashboardServiceProvider extends ServiceProvider
         ], 'views');
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/bredidashboard';
-        }, \Config::get('view.paths')), [$sourcePath]), 'bredidashboard');
+            return $path . '/modules/BrediDashboard';
+        }, \Config::get('view.paths')), [$sourcePath]), 'BrediDashboard');
     }
 
     /**
@@ -93,12 +93,12 @@ class BrediDashboardServiceProvider extends ServiceProvider
      */
     public function registerTranslations()
     {
-        $langPath = resource_path('lang/modules/bredidashboard');
+        $langPath = resource_path('lang/modules/BrediDashboard');
 
         if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'bredidashboard');
+            $this->loadTranslationsFrom($langPath, 'BrediDashboard');
         } else {
-            $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'bredidashboard');
+            $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'BrediDashboard');
         }
     }
 

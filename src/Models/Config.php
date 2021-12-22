@@ -17,7 +17,7 @@ class Config extends Model
     public function getBackgroundAttribute()
     {
         if(isset($this->config['layout']['background_image']) and !empty($this->config['layout']['background_image'])){
-            return route('imagem.render', config('bredidashboard.background_image.destino') . $this->config['layout']['background_image']);
+            return route('imagem.render', config('BrediDashboard.background_image.destino') . $this->config['layout']['background_image']);
         } else {
             return '/coloradmin/images/login-bg-17.jpg';
         }
