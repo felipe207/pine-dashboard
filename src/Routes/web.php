@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\Controle\ConfigController;
+use Brediweb\BrediDashboard8\Http\Controllers\ConfigController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
-use App\Http\Controllers\Controle\UsuarioController;
-use App\Http\Controllers\Controle\RoleController;
-use App\Http\Controllers\Controle\ProfileController;
+use Brediweb\BrediDashboard8\Http\Controllers\UsuarioController;
+use Brediweb\BrediDashboard8\Http\Controllers\RoleController;
+use Brediweb\BrediDashboard8\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\EmailVerificationPromptController;
 
@@ -108,17 +108,4 @@ Route::group([
         Route::get('/excluir/{id}', [$controller, 'destroy'])->middleware('permission:Excluir usuário')->name('delete');
     });
 
-    /*--------------------------------------------------------------------------
-    | Rotas para banners
-    |--------------------------------------------------------------------------*/
-    Route::prefix('banner')->name('banner.')->group(function () {
-        $controller = BannerController::class;
-        Route::get('/', [$controller, 'index'])->middleware('permission:Visualizar banner')->name('index');
-        Route::get('/form/{id?}', [$controller, 'form'])->middleware('permission:Cadastrar banner')->name('form');
-        Route::post('/create', [$controller, 'store'])->middleware('permission:Cadastrar banner')->name('store');
-        Route::post('/update/{id}', [$controller, 'update'])->middleware('permission:Alterar banner')->name('update');
-        Route::get('/destroy/{id}', [$controller, 'destroy'])->middleware('permission:Excluir banner')->name('destroy');
-        Route::get('/destroyImage/{id}/{img}', [$controller, 'destroyImage'])->middleware('permission:Excluir banner')->name('destroyImage');
-    });
-    
 });

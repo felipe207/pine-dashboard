@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Brediweb\BrediDashboard8\Providers;
 
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -20,10 +20,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/controle/dashboard';
 
-    public const DASHBOARD = '/cliente';
-
-    private $homeSite = 'App\\Http\\Controllers\\Site';
-
     /**
      * The controller namespace for the application.
      *
@@ -39,6 +35,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        parent::boot();
+
         $this->configureRateLimiting();
 
         $this->routes(function () {
@@ -50,16 +48,6 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
-
-            Route::middleware('web')
-                ->namespace($this->homeSite)
-                ->group(base_path('routes/web_site.php'));
-
-            // Route::middleware('web_site')
-            //     ->middleware('web_site')
-            //     ->namespace($this->namespace)
-            //     ->group(base_path('routes/web_site.php'));
-
         });
     }
 
@@ -73,5 +61,46 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
+    }
+
+    /**
+     * Define the routes for the application.
+     *
+     * @return void
+     */
+    public function map()
+    {
+        $this->mapApiRoutes();
+
+        $this->mapWebRoutes();
+    }
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapWebRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(__DIR__ . '/../Routes/web.php');
+    }
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapApiRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(__DIR__ . '/../Routes/api.php');
     }
 }

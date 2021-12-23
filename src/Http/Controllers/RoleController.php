@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Controle;
+namespace Brediweb\BrediDashboard8\Http\Controllers;
 
 
 use Illuminate\Http\Request;

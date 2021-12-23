@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Controle;
+namespace Brediweb\BrediDashboard8\Http\Controllers;
 
 use App\Http\Requests\UpdateUsuarioRequest;
 use App\Models\User;

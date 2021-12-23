@@ -2,7 +2,6 @@
 
 namespace Brediweb\BrediDashboard8\Providers;
 
-use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class BrediDashboardServiceProvider extends ServiceProvider
@@ -109,9 +108,9 @@ class BrediDashboardServiceProvider extends ServiceProvider
      */
     public function registerFactories()
     {
-        if (!app()->environment('production')) {
-            app(Factory::class)->load(__DIR__ . '/../Database/factories');
-        }
+        // if (!app()->environment('production')) {
+        //     app(Factory::class)->load(__DIR__ . '/../Database/factories');
+        // }
     }
 
     /**

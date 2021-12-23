@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Controle;
+namespace Brediweb\BrediDashboard8\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;

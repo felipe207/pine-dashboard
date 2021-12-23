@@ -3,7 +3,6 @@
 namespace Brediweb\BrediDashboard8\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Facades\Schema;
 
 class BrediColorAdminServiceProvider extends ServiceProvider
@@ -153,9 +152,9 @@ class BrediColorAdminServiceProvider extends ServiceProvider
      */
     public function registerFactories()
     {
-        if (! app()->environment('production')) {
-            app(Factory::class)->load(__DIR__ . '/../Database/factories');
-        }
+        // if (! app()->environment('production')) {
+        //     app(Factory::class)->load(__DIR__ . '/../Database/factories');
+        // }
     }
 
     /**
