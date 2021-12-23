@@ -3,6 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Brediweb\BrediDashboard8\Models\User;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class CreateUsersTable extends Migration
 {
@@ -25,6 +28,13 @@ class CreateUsersTable extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
+
+        $role1 = Role::find(1);
+        User::create(array(
+		    'name' => 'Bredi',
+		    'email' => 'contato@bredi.com.br',
+		    'password' => Hash::make('bredi')
+		))->assignRole($role1);
     }
 
     /**
