@@ -33,7 +33,8 @@ class BrediDashboardServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->registerFactories();
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/migrations');
+        $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
 
     }
 
