@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Brediweb\BrediDashboard8\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;

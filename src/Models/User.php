@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Brediweb\BrediDashboard8\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -65,16 +65,16 @@ class User extends Authenticatable
     ];
 
 
-    public function transformAudit(array $data)
-    {
-        if (Arr::has($data, 'new_values.grupo_usuario_id')) {
-            $data['old_values']['grupo_usuario_id'] = GrupoUsuario::find($this->getOriginal('grupo_usuario_id'))->nome;
-            $data['new_values']['grupo_usuario_id'] = GrupoUsuario::find($this->getAttribute('grupo_usuario_id'))->nome;
-        }
-        if (Arr::has($data, 'old_values.grupo_usuario_id')) {
-            $data['old_values']['grupo_usuario_id'] = GrupoUsuario::find($this->getOriginal('grupo_usuario_id'))->nome;
-        }
+    // public function transformAudit(array $data)
+    // {
+    //     if (Arr::has($data, 'new_values.grupo_usuario_id')) {
+    //         $data['old_values']['grupo_usuario_id'] = GrupoUsuario::find($this->getOriginal('grupo_usuario_id'))->nome;
+    //         $data['new_values']['grupo_usuario_id'] = GrupoUsuario::find($this->getAttribute('grupo_usuario_id'))->nome;
+    //     }
+    //     if (Arr::has($data, 'old_values.grupo_usuario_id')) {
+    //         $data['old_values']['grupo_usuario_id'] = GrupoUsuario::find($this->getOriginal('grupo_usuario_id'))->nome;
+    //     }
 
-        return $data;
-    }
+    //     return $data;
+    // }
 }
