@@ -23,6 +23,12 @@
         },
         "files": ["src/Http/Helper/Helper.php"]
     },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan jetstream:install livewire"
+        ]
+    },
     "minimum-stability": "dev",
     "require": {
         "php": "^7.3",

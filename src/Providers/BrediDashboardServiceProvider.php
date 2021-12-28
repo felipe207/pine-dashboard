@@ -3,6 +3,7 @@
 namespace Brediweb\BrediDashboard8\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Brediweb\BrediDashboard8\Console\InstallCommand;
 
 class BrediDashboardServiceProvider extends ServiceProvider
 {
@@ -35,6 +36,7 @@ class BrediDashboardServiceProvider extends ServiceProvider
         $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/migrations');
         $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
+        $this->configureCommands();
 
     }
 
@@ -122,5 +124,21 @@ class BrediDashboardServiceProvider extends ServiceProvider
     public function provides()
     {
         return [];
+    }
+
+    /**
+     * Configure the commands offered by the application.
+     *
+     * @return void
+     */
+    protected function configureCommands()
+    {
+        if (! $this->app->runningInConsole()) {
+            return;
+        }
+
+        $this->commands([
+            InstallCommand::class,
+        ]);
     }
 }

@@ -36,15 +36,7 @@ class BrediColorAdminServiceProvider extends ServiceProvider
             try {
                 if (Schema::hasTable('configs')) {
                     $config = (new \Brediweb\BrediDashboard8\Repositories\BrediDashboardRepository)->getConfig();
-                    // $vendor = (!empty(config('BrediDashboard.templates')[config('BrediDashboard.default')])) ? config('BrediDashboard.templates')[config('BrediDashboard.default')] : 'bredicoloradmin';
-                    $vendor = config('BrediDashboard.templates')[config('BrediDashboard.default')];
-                    $includes = [
-                        "{$vendor['name']}::layouts.*",
-                        "{$vendor['name']}::includes.header",
-                        "{$vendor['name']}::*",
-                        "{$vendor['name']}::includes.sidebar"
-                    ];
-                    view()->composer($includes, function($view) use($config) {
+                    view()->composer('*', function($view) use($config) {
                         return $view->with('config', $config);
                     });
                 }
