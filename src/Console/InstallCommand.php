@@ -61,9 +61,8 @@ class InstallCommand extends Command
         (new Filesystem)->ensureDirectoryExists(resource_path('views/layouts'));
         (new Filesystem)->copyDirectory(__DIR__.'/../Resources/views/layouts', resource_path('views/layouts'));
         
-        $this->info('index.blade.php');
         copy(__DIR__.'/../Resources/views/404.blade.php', resource_path('views/404.blade.php'));
-        copy(__DIR__.'/../Resources/views/index.blade.php', resource_path('views/index.blade.php'));
+        copy(__DIR__.'/../Resources/views/dashboard.blade.php', resource_path('views/dashboard.blade.php'));
         
         // Assets...
         $this->info('Copiando assets...');
