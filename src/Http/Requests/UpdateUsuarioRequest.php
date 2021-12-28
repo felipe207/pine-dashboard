@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Brediweb\BrediDashboard8\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

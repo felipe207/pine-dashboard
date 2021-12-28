@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use brediweb\ImagemUpload8\ImagemUpload;
-use App\Models\Config;
+use Brediweb\BrediDashboard8\Models\Config;
 
 class ConfigController extends Controller
 {

@@ -4,7 +4,7 @@ namespace Brediweb\BrediDashboard8\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Brediweb\BrediDashboard8\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use DB;

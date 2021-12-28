@@ -3,11 +3,11 @@
 namespace Brediweb\BrediDashboard8\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\UsuarioStoreRequest;
-use App\Http\Requests\UsuarioUpdateRequest;
+use Brediweb\BrediDashboard8\Http\Controllers\Controller;
+use Brediweb\BrediDashboard8\Http\Requests\UsuarioStoreRequest;
+use Brediweb\BrediDashboard8\Http\Requests\UsuarioUpdateRequest;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use Brediweb\BrediDashboard8\Models\User;
 use Spatie\Permission\Models\Role;
 
 class UsuarioController extends Controller

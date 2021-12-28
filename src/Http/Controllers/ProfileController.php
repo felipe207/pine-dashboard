@@ -2,8 +2,8 @@
 
 namespace Brediweb\BrediDashboard8\Http\Controllers;
 
-use App\Http\Requests\UpdateUsuarioRequest;
-use App\Models\User;
+use Brediweb\BrediDashboard8\Http\Requests\UpdateUsuarioRequest;
+use Brediweb\BrediDashboard8\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;

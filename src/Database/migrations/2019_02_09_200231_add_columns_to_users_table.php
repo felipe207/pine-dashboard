@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Brediweb\BrediDashboard8\Models\User;
+use App\Models\User;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\Models\Role;
@@ -20,11 +20,12 @@ class AddColumnsToUsersTable extends Migration
             $table->string('imagem')->nullable();
         });
 
+        $role1 = Role::find(1);
         User::create(array(
 		    'name' => 'Bredi',
 		    'email' => 'contato@bredi.com.br',
 		    'password' => Hash::make('bredi')
-		));
+		))->assignRole($role1);
     }
 
     /**

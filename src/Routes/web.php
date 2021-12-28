@@ -19,7 +19,7 @@ use Laravel\Fortify\Http\Controllers\EmailVerificationPromptController;
 |
 */
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
     Route::any('controle/dashboard', function () {
         return view('index');
     })->name('dashboard');
@@ -60,7 +60,7 @@ Route::group([
 
 Route::group([
     'prefix'        => 'controle/',
-    'middleware'    => ['auth:sanctum', 'verified'],
+    'middleware'    => ['web', 'auth:sanctum', 'verified'],
     'as'            => 'controle.'
 ] ,function () {
 
