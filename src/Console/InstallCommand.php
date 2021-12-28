@@ -4,6 +4,7 @@ namespace Brediweb\BrediDashboard8\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Artisan;
 
 class InstallCommand extends Command
 {
@@ -30,6 +31,8 @@ class InstallCommand extends Command
     {
         $this->info('Iniciando instalação...');
 
+        $this->info('Instalando jetstream...');
+        Artisan::call('jetstream:install livewire');
         // Remove Tailwind Configuration...
         // if ((new Filesystem)->exists(base_path('tailwind.config.js'))) {
         //     (new Filesystem)->delete(base_path('tailwind.config.js'));
@@ -66,6 +69,9 @@ class InstallCommand extends Command
         $this->info('Copiando assets...');
         (new Filesystem)->ensureDirectoryExists(public_path('assets'));
         (new Filesystem)->copyDirectory(__DIR__.'/../Public/assets', public_path('assets'));
+
+        $this->info('Rodando as migrations...');
+        Artisan::call('migrate');
 
         $this->info('Instalação finalizada...');
     }
