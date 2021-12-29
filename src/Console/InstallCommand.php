@@ -4,6 +4,7 @@ namespace Brediweb\BrediDashboard8\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Composer;
 use Illuminate\Support\Facades\Artisan;
 
 class InstallCommand extends Command
@@ -21,6 +22,19 @@ class InstallCommand extends Command
      * @var string
      */
     protected $description = 'Install the bredi dashboard 8';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct(Filesystem $filesystem, Composer $composer)
+    {
+        parent::__construct();
+
+        $this->files  = $filesystem;
+        $this->composer = $composer;
+    }
 
     /**
      * Execute the console command.
@@ -68,6 +82,11 @@ class InstallCommand extends Command
         $this->info('Copiando assets...');
         (new Filesystem)->ensureDirectoryExists(public_path('assets'));
         (new Filesystem)->copyDirectory(__DIR__.'/../Public/assets', public_path('assets'));
+
+        $user_model =  $this->files->get(app_path('Models').DIRECTORY_SEPARATOR.'User.php');
+        $user_model = str_replace('use TwoFactorAuthenticatable;', 'use TwoFactorAuthenticatable;'.PHP_EOL."\t".'use HasRoles;', $user_model);
+        $user_model = str_replace('use Illuminate\Foundation\Auth\User as Authenticatable;', 'use Illuminate\Foundation\Auth\User as Authenticatable;'.PHP_EOL.'use Spatie\Permission\Traits\HasRoles;', $user_model);
+        $this->files->put(app_path('Models').DIRECTORY_SEPARATOR.'User.php', $user_model);
 
         $this->info('Rodando as migrations...');
         Artisan::call('migrate');
