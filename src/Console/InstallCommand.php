@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 
 class InstallCommand extends Command
 {
@@ -43,18 +44,22 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $this->info('Iniciando instalação...');
+        $this->line('Iniciando instalação');
+        
+        $this->line('Testando Requisitos');
+        // Test database connection
+        try {
+            DB::connection()->getPdo();
+            $this->line('Conexão com o banco: ');
+            $this->info('OK');
+        } catch (\Exception $e) {
+            $this->error('Erro de conexão com o banco! Verifique as configurações do .env.');
+            $this->line("error: " .$e);
+            return;
+        }
 
         $this->info('Instalando jetstream...');
         Artisan::call('jetstream:install livewire');
-        // Remove Tailwind Configuration...
-        // if ((new Filesystem)->exists(base_path('tailwind.config.js'))) {
-        //     (new Filesystem)->delete(base_path('tailwind.config.js'));
-        // }
-
-        // Bootstrap Configuration...
-        // copy(__DIR__.'/../../../../stubs/webpack.mix.js', base_path('webpack.mix.js'));
-        // copy(__DIR__.'/../../../../stubs/webpack.config.js', base_path('webpack.config.js'));
 
         // Views
         $this->info('Copiando views...');
