@@ -87,6 +87,20 @@ class InstallCommand extends Command
         $user_model = str_replace('use TwoFactorAuthenticatable;', 'use TwoFactorAuthenticatable;'.PHP_EOL."\t".'use HasRoles;', $user_model);
         $user_model = str_replace('use Illuminate\Foundation\Auth\User as Authenticatable;', 'use Illuminate\Foundation\Auth\User as Authenticatable;'.PHP_EOL.'use Spatie\Permission\Traits\HasRoles;', $user_model);
         $this->files->put(app_path('Models').DIRECTORY_SEPARATOR.'User.php', $user_model);
+        
+        $auth_service_provider =  $this->files->get(app_path('Providers').DIRECTORY_SEPARATOR.'AuthServiceProvider.php');
+        $auth_service_provider = str_replace('$this->registerPolicies();', '$this->registerPolicies();'.PHP_EOL.''.PHP_EOL.
+        "\t\t".'Gate::before(function ($user, $ability) {'.PHP_EOL.
+        "\t\t\t".'return $user->hasRole("Administrador") ? true : null;'.PHP_EOL.
+        "\t\t".'});', $auth_service_provider);
+        $this->files->put(app_path('Providers').DIRECTORY_SEPARATOR.'AuthServiceProvider.php', $auth_service_provider);
+
+        $kernel =  $this->files->get(app_path('Http').DIRECTORY_SEPARATOR.'Kernel.php');
+        $kernel = str_replace('\Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,', '\Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,'.PHP_EOL.
+        "\t\t"."'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,".PHP_EOL.
+        "\t\t"."'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,".PHP_EOL.
+        "\t\t"."'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,", $kernel);
+        $this->files->put(app_path('Http').DIRECTORY_SEPARATOR.'Kernel.php', $kernel);
 
         $this->info('Rodando as migrations...');
         Artisan::call('migrate');

@@ -3,7 +3,7 @@
 namespace Brediweb\BrediDashboard8\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
-use Brediweb\BrediDashboard8\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Brediweb\BrediDashboard8\Http\Requests\UsuarioStoreRequest;
 use Brediweb\BrediDashboard8\Http\Requests\UsuarioUpdateRequest;
 use Illuminate\Support\Facades\Auth;
