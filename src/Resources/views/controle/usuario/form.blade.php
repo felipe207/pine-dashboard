@@ -39,8 +39,8 @@
                     <fieldset>
 
                         <div class="form-group w-75">
-                            <label for="roles">Categoria</label>
-                            {!! Form::select('roles', $roles ? $roles : [null=>'Nenhuma grupo cadastrado'] , null, ['class' => 'form-control', 'required']) !!}
+                            <label for="roles">Grupo Usuário</label>
+                            {!! Form::select('roles', $roles ? [null=>'Selecione'] + $roles : [null=>'Nenhuma grupo cadastrado'] , isset($user) ? $user->roles->first()->name : null, ['class' => 'form-control', 'required']) !!}
                         </div>
 
                         <div class="form-group w-75">

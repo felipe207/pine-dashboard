@@ -21,7 +21,7 @@ use Laravel\Fortify\Http\Controllers\EmailVerificationPromptController;
 
 Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
     Route::any('controle/dashboard', function () {
-        return view('index');
+        return view('dashboard');
     })->name('dashboard');
  });
 

@@ -2,7 +2,8 @@
 
 namespace Brediweb\BrediDashboard8\Http\Controllers;
 
-
+use Brediweb\BrediDashboard8\Http\Requests\RoleStoreRequest;
+use Brediweb\BrediDashboard8\Http\Requests\RoleUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Spatie\Permission\Models\Role;
@@ -53,17 +54,12 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleStoreRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:roles,name',
-            'permission' => 'required',
-        ]);
-
         $role = Role::create(['name' => $request->input('name'), 'guard_name' => 'web']);
         $role->syncPermissions($request->input('permission'));
 
-        return redirect()->route('roles.index')
+        return redirect()->route('controle.roles.index')
                         ->with('success','Operação realizada com sucesso.');
     }
     /**
@@ -106,20 +102,15 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleUpdateRequest $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'permission' => 'required',
-        ]);
-
         $role = Role::find($id);
         $role->name = $request->input('name');
         $role->save();
 
         $role->syncPermissions($request->input('permission'));
 
-        return redirect()->route('roles.index')
+        return redirect()->route('controle.roles.index')
                         ->with('success','Operação realizada com sucesso.');
     }
     /**
@@ -131,7 +122,7 @@ class RoleController extends Controller
     public function destroy($id)
     {
         DB::table("roles")->where('id',$id)->delete();
-        return redirect()->route('roles.index')
+        return redirect()->route('controle.roles.index')
                         ->with('success','Operação realizada com sucesso.');
     }
 }

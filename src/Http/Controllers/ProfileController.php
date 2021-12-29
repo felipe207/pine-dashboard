@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
-use brediweb\ImagemUpload8\ImagemUpload;
+use Brediweb\Imagemupload8\ImagemUpload;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -67,11 +67,11 @@ class ProfileController extends Controller
 
             $user = User::find(Auth::id())->update($input);
 
-            return redirect()->back()->with('msg', 'Registro atualizado com sucesso!');
+            return redirect()->back()->with('msg', 'Perfil atualizado com sucesso!');
 
         } catch (\Exception $e) {
-            dd($e);
-            return redirect()->back()->with('msg', 'Não foi possível alterar o registro')->with('error', true)->with('exception', $e->getMessage());
+            // dd($e);
+            return redirect()->back()->with('msg', 'Não foi possível alterar o perfil')->with('error', true)->with('exception', $e->getMessage());
         }
     }
 
@@ -87,10 +87,10 @@ class ProfileController extends Controller
 
             $user->delete();
 
-            return redirect()->back()->with('msg', 'Registro excluido com sucesso!');
+            return redirect()->back()->with('msg', 'Perfil excluido com sucesso!');
 
         } catch (\Exception $e) {
-            return redirect()->back()->with('msg', 'Não foi possível excluir o registro.');
+            return redirect()->back()->with('msg', 'Não foi possível excluir o perfil.');
         }
 
     }

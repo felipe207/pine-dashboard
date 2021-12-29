@@ -7,7 +7,7 @@ use Illuminate\Routing\Controller;
 use Brediweb\BrediDashboard8\Http\Requests\UsuarioStoreRequest;
 use Brediweb\BrediDashboard8\Http\Requests\UsuarioUpdateRequest;
 use Illuminate\Support\Facades\Auth;
-use Brediweb\BrediDashboard8\Models\User;
+use App\Models\User;
 use Spatie\Permission\Models\Role;
 
 class UsuarioController extends Controller
@@ -40,10 +40,10 @@ class UsuarioController extends Controller
 
             $user->assignRole($request->input('roles'));
 
-            return redirect()->route('usuario.index')->with('msg', 'Usuário cadastrado com sucesso.')->with('error', false);
+            return redirect()->route('controle.usuario.index')->with('msg', 'Usuário cadastrado com sucesso.')->with('error', false);
 
         } catch (\Throwable $th) {
-            return redirect()->route('usuario.create')->with('msg', 'Não foi possível efetuar a operação.')->with('error', true);
+            return redirect()->route('controle.usuario.create')->with('msg', 'Não foi possível efetuar a operação.')->with('error', true);
         }
     }
 
@@ -53,11 +53,10 @@ class UsuarioController extends Controller
 
         if ($user->id != Auth::user()->id) {
             $user->delete();
-            return redirect()->route('usuario.index')->with('msg', 'Operação realizada com sucesso')->with('error', false);
+            return redirect()->route('controle.usuario.index')->with('msg', 'Operação realizada com sucesso')->with('error', false);
         }else
         {
-            return redirect()->route('usuario.index')->with('msg', 'Não foi possível efetuar a operação')->with('error', true);
-
+            return redirect()->route('controle.usuario.index')->with('msg', 'Não foi possível efetuar a operação')->with('error', true);
         }
 
     }
@@ -92,14 +91,14 @@ class UsuarioController extends Controller
             $user->syncRoles($request->input('roles'));
 
             return redirect()
-                    ->route('usuario.index')
+                    ->route('controle.usuario.index')
                     ->with('msg', 'Operação realizada com sucesso.')
                     ->with('error', false);
 
         } catch (\Throwable $th) {
             dd($th);
             return redirect()
-                    ->route('usuario.index')
+                    ->route('controle.usuario.index')
                     ->with('msg', 'Falha na operação.')
                     ->with('error', true);
         }

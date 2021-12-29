@@ -24,7 +24,25 @@ class UsuarioUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => 'nullable|string|min:4|max:255|confirmed',
+            'name'      => 'required|string',
+            'email'     => 'required|unique:users,email,'.$this->id,
+            'password'  => 'nullable|string|min:4|max:255|confirmed',
+            'roles'     => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'password.string' => 'O campo senha deve ser uma string',
+            'password.min' => 'O campo senha deve ter no mínimo 4 caracteres',
+            'password.max' => 'O campo senha deve ter no máximo 255 caracteres',
+            'password.confirmed' => 'O campo senha deve ser igual ao campo confirmação de senha',
+            'name.required' => 'O campo nome é obrigatório',
+            'name.string' => 'O campo nome deve ser uma string',
+            'roles.required' => 'O campo permissão é obrigatório',
+            'email.required' => 'O campo email é obrigatório',
+            'email.unique' => 'Esse email já existe',
         ];
     }
 }
