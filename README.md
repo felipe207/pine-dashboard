@@ -39,3 +39,7 @@ OBS: Antes de rodar este comando, lembre-se de configurar corretamente o arquivo
 ```bash
 php artisan dashboard:install
 ```
+Login inicial:
+
+user: contato@bredi.com.br
+senha: bredi
