@@ -74,3 +74,7 @@ Route::group([
 
 });
 ```
+### Login inicial
+
+user: contato@bredi.com.br
+senha: bredi
