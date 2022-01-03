@@ -39,3 +39,38 @@ OBS: Antes de rodar este comando, lembre-se de configurar corretamente o arquivo
 ```bash
 php artisan dashboard:install
 ```
+
+### Rotas
+
+Exemplo de rotas do controle
+
+```PHP
+Route::group([
+    'prefix'        => 'controle/',
+    'middleware'    => ['web', 'auth:sanctum', 'verified'],
+    'as'            => 'controle.'
+] ,function () {
+
+    /*--------------------------------------------------------------------------
+    | Adicione as rotas do controle aqui dentro
+    |--------------------------------------------------------------------------*/
+
+    ...
+
+    /*--------------------------------------------------------------------------
+    | Rotas para Gerenciamento de Empreendimentos
+    |--------------------------------------------------------------------------*/
+    Route::prefix('empreendimentos')->name('empreendimentos.')->group(function () {
+        $controller = EmpreendimentoController::class;
+        Route::get('/', [$controller, 'index'])->middleware('permission:Visualizar empreendimento')->name('index');
+        Route::get('/create', [$controller, 'create'])->middleware('permission:Cadastrar empreendimento')->name('create');
+        Route::post('/store', [$controller, 'store'])->middleware('permission:Cadastrar empreendimento')->name('store');
+        Route::get('/edit/{id}', [$controller, 'edit'])->middleware('permission:Alterar empreendimento')->name('edit');
+        Route::put('/update/{id}', [$controller, 'update'])->middleware('permission:Alterar empreendimento')->name('update');
+        Route::delete('/delete/{id}', [$controller, 'delete'])->middleware('permission:Excluir empreendimento')->name('delete');
+    });
+
+    ...
+
+});
+```

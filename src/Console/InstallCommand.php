@@ -107,10 +107,50 @@ class InstallCommand extends Command
         "\t\t"."'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,", $kernel);
         $this->files->put(app_path('Http').DIRECTORY_SEPARATOR.'Kernel.php', $kernel);
 
+        $fortify_service_provider = $this->files->get(app_path('Providers').DIRECTORY_SEPARATOR.'FortifyServiceProvider.php');
+        $fortify_service_provider = str_replace('Fortify::resetUserPasswordsUsing(ResetUserPassword::class);', 'Fortify::resetUserPasswordsUsing(ResetUserPassword::class);'.PHP_EOL.'
+        $this->app->singleton(
+            \Laravel\Fortify\Contracts\LogoutResponse::class,
+            \Brediweb\BrediDashboard8\Http\Responses\LogoutResponse::class
+        );', $fortify_service_provider);
+        $this->files->put(app_path('Providers').DIRECTORY_SEPARATOR.'FortifyServiceProvider.php', $fortify_service_provider);
+
+        $fortify_config = $this->files->get(config_path('fortify.php'));
+        $fortify_config = str_replace('Features::registration(),', '// Features::registration(),', $fortify_config);
+        $this->files->put(config_path('fortify.php'), $fortify_config);
+
+        (new Filesystem)->append(base_path('routes/web.php'), $this->routeExemplo());
+
         $this->info('Rodando as migrations...');
         Artisan::call('migrate');
 
         $this->info('Instalação finalizada...');
+    }
+
+    protected function routeExemplo()
+    {
+        return <<<'EOF'
+        Route::group([
+            'prefix'        => 'controle/',
+            'middleware'    => ['web', 'auth:sanctum', 'verified'],
+            'as'            => 'controle.'
+        ] ,function () {
+        
+            /*--------------------------------------------------------------------------
+            | Rotas do controle (Exemplo)
+            |--------------------------------------------------------------------------*/
+            // Route::prefix('empreendimentos')->name('empreendimentos.')->group(function () {
+            //     $controller = EmpreendimentoController::class;
+            //     Route::get('/', [$controller, 'index'])->middleware('permission:Visualizar empreendimento')->name('index');
+            //     Route::get('/create', [$controller, 'create'])->middleware('permission:Cadastrar empreendimento')->name('create');
+            //     Route::post('/store', [$controller, 'store'])->middleware('permission:Cadastrar empreendimento')->name('store');
+            //     Route::get('/edit/{id}', [$controller, 'edit'])->middleware('permission:Alterar empreendimento')->name('edit');
+            //     Route::put('/update/{id}', [$controller, 'update'])->middleware('permission:Alterar empreendimento')->name('update');
+            //     Route::delete('/delete/{id}', [$controller, 'delete'])->middleware('permission:Excluir empreendimento')->name('delete');
+            // });
+        
+        });
+        EOF;
     }
 
 }
