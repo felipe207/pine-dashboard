@@ -39,6 +39,6 @@
         "laravelcollective/html": "^6.2.1",
         "livewire/livewire": "^2.5",
         "arcanedev/log-viewer": "^8.2.0",
-        "vinkla/hashids": "^9.1.0"
+        "vinkla/hashids": "^10.0.0"
     }
 }
