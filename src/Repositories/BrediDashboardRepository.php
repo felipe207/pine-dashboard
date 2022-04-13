@@ -1,11 +1,11 @@
 <?php
-namespace Brediweb\BrediDashboard8\Repositories;
+namespace Brediweb\BrediDashboard\Repositories;
 
-use Brediweb\BrediDashboard8\Repositories\BaseRepository;
+use Brediweb\BrediDashboard\Repositories\BaseRepository;
 
 class BrediDashboardRepository extends BaseRepository
 {
-    protected $modelClass = \Brediweb\BrediDashboard8\Models\Config::class;
+    protected $modelClass = \Brediweb\BrediDashboard\Models\Config::class;
 
     public function getConfig()
     {

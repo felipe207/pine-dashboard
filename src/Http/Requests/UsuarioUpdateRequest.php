@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Http\Requests;
+namespace Brediweb\BrediDashboard\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,10 +24,10 @@ class UsuarioUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'      => 'required|string',
-            'email'     => 'required|unique:users,email,'.$this->id,
-            'password'  => 'nullable|string|min:4|max:255|confirmed',
-            'roles'     => 'required'
+            'name' => 'required|string',
+            'email' => 'required|unique:users,email,' . $this->id,
+            'password' => 'nullable|string|min:4|max:255|confirmed',
+            'roles' => 'required',
         ];
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Http\Requests;
+namespace Brediweb\BrediDashboard\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -15,7 +15,7 @@ class UpdateUsuarioRequest extends FormRequest
     {
         $rules = [
             'name' => 'required|min:2',
-            'email' => "required|email|unique:users,email,$this->id,id"
+            'email' => "required|email|unique:users,email,$this->id,id",
         ];
 
         // if (request()->get('password'))

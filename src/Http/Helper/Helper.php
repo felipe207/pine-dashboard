@@ -3,7 +3,8 @@ use Illuminate\Support\Facades\File;
 
 // require base_path() . '/Bredi/bredi-dashboard/src/Deploy/index.php';
 
-function loadAssetJs($path){
+function loadAssetJs($path)
+{
     $file = File::get($path);
     echo "<script>" . $file . "</script>";
 }
@@ -17,9 +18,9 @@ function loadAssetCSS($path)
 function activeMenu($rota)
 {
     if (is_array($rota)) {
-        if(count($rota) > 0) {
-            foreach($rota as $rotaSingle) {
-                if((strpos(\Illuminate\Support\Facades\Route::currentRouteName(), $rotaSingle) === 0)) {
+        if (count($rota) > 0) {
+            foreach ($rota as $rotaSingle) {
+                if ((strpos(\Illuminate\Support\Facades\Route::currentRouteName(), $rotaSingle) === 0)) {
                     return ' active ';
                 }
             }
@@ -49,10 +50,10 @@ function sendResponse($result, $message, $code = 200)
 {
     $response = [
         'success' => true,
-        'data'    => $result,
+        'data' => $result,
         'message' => $message,
     ];
-    
+
     return response()->json($response, $code);
 }
 
@@ -63,21 +64,23 @@ function sendError($error, $code = 404, $errorMessages = [])
         'message' => $error,
     ];
 
-    if(!empty($errorMessages)){
+    if (!empty($errorMessages)) {
         $response['data'] = $errorMessages;
     }
-    
+
     return response()->json($response, $code);
 }
 
-function checkRequired($input) {
-    $config = explode('|',config($input));
+function checkRequired($input)
+{
+    $config = explode('|', config($input));
     if (in_array('required', $config)) {
         return 'required';
     }
 }
 
-function rotasControle($funcao, $customMiddleware = [], $groupPrefix = null){
-    $middleware = ['auth', \Brediweb\BrediDashboard8\Http\Middleware\ValidaPermissao::class];
+function rotasControle($funcao, $customMiddleware = [], $groupPrefix = null)
+{
+    $middleware = ['auth', \Brediweb\BrediDashboard\Http\Middleware\ValidaPermissao::class];
     return Route::name($groupPrefix)->prefix(config('BrediDashboard.prefix'))->middleware(array_merge($middleware, $customMiddleware))->group($funcao);
 }

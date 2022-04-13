@@ -1,12 +1,12 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Http\Controllers;
+namespace Brediweb\BrediDashboard\Http\Controllers;
 
+use Brediweb\BrediDashboard\Models\Config;
+use Brediweb\ImagemUpload\ImagemUpload;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Brediweb\Imagemupload8\ImagemUpload;
-use Brediweb\BrediDashboard8\Models\Config;
 
 class ConfigController extends Controller
 {
@@ -43,7 +43,7 @@ class ConfigController extends Controller
         $background_image = ImagemUpload::salva([
             'input_file' => 'background_image',
             'destino' => 'background_image/',
-            'resolucao' => ['h' => 1280, 'w' => 1280]
+            'resolucao' => ['h' => 1280, 'w' => 1280],
         ]);
         if ($background_image) {
             $input['config']['layout']['background_image'] = $background_image;
@@ -51,7 +51,7 @@ class ConfigController extends Controller
         $logo = ImagemUpload::salva([
             'input_file' => 'logo',
             'destino' => 'company/',
-            'resolucao' => ['g' => ['h' => 30, 'w' => 100], 'p' => ['h' => 200, 'w' => 200]]
+            'resolucao' => ['g' => ['h' => 30, 'w' => 100], 'p' => ['h' => 200, 'w' => 200]],
         ]);
         if ($logo) {
             $input['config']['layout']['logo'] = $logo;
@@ -60,7 +60,7 @@ class ConfigController extends Controller
         try {
             $config = Config::first();
 
-            if(isset($config->id)) {
+            if (isset($config->id)) {
                 $input = $this->atualizaRegistro($config, $input);
 
                 $config->update($input);
@@ -75,9 +75,9 @@ class ConfigController extends Controller
         }
     }
 
-   function atualizaRegistro($config, $input)
-   {
-       if (isset($input['config'])) {
+    public function atualizaRegistro($config, $input)
+    {
+        if (isset($input['config'])) {
             $input['config']['layout'] = (!empty($config->config['layout'])) ? array_merge($config->config['layout'], $input['config']['layout']) : $input['config']['layout'];
             // dd($config->config, $input['config']);
             // $input['config'] = (!empty($config->config)) ? array_merge($config->config, $input['config']) : $input['config'];
@@ -85,14 +85,14 @@ class ConfigController extends Controller
         }
 
         return $input;
-   }
+    }
     /**
      * Faz upload de imagens do summernote
      * @return Response
      */
     public function uploadEditor(Request $request)
     {
-        $imagem = ImagemUpload::salva(['input_file' => 'file', 'destino' => 'upload']);//, 'resolucao' => ['p' => ['w' => 100, 'h' => 100], 'm' => ['w' => 100, 'h' => 100]]
+        $imagem = ImagemUpload::salva(['input_file' => 'file', 'destino' => 'upload']); //, 'resolucao' => ['p' => ['w' => 100, 'h' => 100], 'm' => ['w' => 100, 'h' => 100]]
 
         return route('imagem.render', 'upload/' . $imagem);
 

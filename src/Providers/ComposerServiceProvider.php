@@ -1,10 +1,8 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Providers;
+namespace Brediweb\BrediDashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Route;
-use App\Models\Transacao;
 
 class ComposerServiceProvider extends ServiceProvider
 {

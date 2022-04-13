@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Http\Requests;
+namespace Brediweb\BrediDashboard\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,7 +24,7 @@ class RoleUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:roles,name,'.$this->id,
+            'name' => 'required|unique:roles,name,' . $this->id,
             'permission' => 'required',
         ];
     }

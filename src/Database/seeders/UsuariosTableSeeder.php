@@ -1,10 +1,10 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Database\seeders;
+namespace Brediweb\BrediDashboard\Database\seeders;
 
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class UsuariosTableSeeder extends Seeder
@@ -19,9 +19,9 @@ class UsuariosTableSeeder extends Seeder
 
         $role1 = Role::find(1);
         User::create(array(
-		    'name' => 'Bredi',
-		    'email' => 'contato@bredi.com.br',
-		    'password' => Hash::make('bredi')
-		))->assignRole($role1);
+            'name' => 'Bredi',
+            'email' => 'contato@bredi.com.br',
+            'password' => Hash::make('bredi'),
+        ))->assignRole($role1);
     }
 }

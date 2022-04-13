@@ -1,9 +1,9 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Providers;
+namespace Brediweb\BrediDashboard\Providers;
 
+use Brediweb\BrediDashboard\Console\InstallCommand;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Brediweb\BrediDashboard8\Console\InstallCommand;
 
 class BrediDashboardServiceProvider extends ServiceProvider
 {
@@ -29,13 +29,13 @@ class BrediDashboardServiceProvider extends ServiceProvider
             require_once $file;
         }
 
-        $this->loadViewsFrom(__DIR__.'/views', 'bredicoloradmin');
+        $this->loadViewsFrom(__DIR__ . '/views', 'bredicoloradmin');
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
         $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/migrations');
-        $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
         $this->configureCommands();
 
     }
@@ -133,7 +133,7 @@ class BrediDashboardServiceProvider extends ServiceProvider
      */
     protected function configureCommands()
     {
-        if (! $this->app->runningInConsole()) {
+        if (!$this->app->runningInConsole()) {
             return;
         }
 

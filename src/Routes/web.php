@@ -1,11 +1,11 @@
 <?php
 
-use Brediweb\BrediDashboard8\Http\Controllers\ConfigController;
-use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
-use Brediweb\BrediDashboard8\Http\Controllers\UsuarioController;
-use Brediweb\BrediDashboard8\Http\Controllers\RoleController;
-use Brediweb\BrediDashboard8\Http\Controllers\ProfileController;
+use Brediweb\BrediDashboard\Http\Controllers\ConfigController;
+use Brediweb\BrediDashboard\Http\Controllers\ProfileController;
+use Brediweb\BrediDashboard\Http\Controllers\RoleController;
+use Brediweb\BrediDashboard\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Laravel\Fortify\Http\Controllers\EmailVerificationPromptController;
 
 /*
@@ -17,28 +17,28 @@ use Laravel\Fortify\Http\Controllers\EmailVerificationPromptController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
     Route::any('controle/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
- });
+});
 
 Route::get('img-render/{path}/{tamanho?}/{imagem?}', [
-	'as' => 'imagem.render',
-	'uses' => 'ImagemUploadController@imagemRender',
+    'as' => 'imagem.render',
+    'uses' => 'ImagemUploadController@imagemRender',
 ]);
 
 Route::group([
-    'middleware' => config('fortify.middleware', ['web'])
+    'middleware' => config('fortify.middleware', ['web']),
 ], function () {
     $enableViews = config('fortify.views', true);
 
     // Authentication...
     if ($enableViews) {
         Route::get('/controle', [AuthenticatedSessionController::class, 'create'])
-            ->middleware(['guest:'.config('fortify.guard')])
+            ->middleware(['guest:' . config('fortify.guard')])
             ->name('controle.login');
     }
 
@@ -46,12 +46,12 @@ Route::group([
 
     Route::post('/controle', [AuthenticatedSessionController::class, 'store'])
         ->middleware(array_filter([
-            'guest:'.config('fortify.guard'),
-            $limiter ? 'throttle:'.$limiter : null,
+            'guest:' . config('fortify.guard'),
+            $limiter ? 'throttle:' . $limiter : null,
         ]));
     Route::get('/email/verify', [EmailVerificationPromptController::class, '__invoke'])
-    ->middleware(['guest:'.config('fortify.guard')])
-    ->name('verification.notice');
+        ->middleware(['guest:' . config('fortify.guard')])
+        ->name('verification.notice');
 
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
@@ -59,10 +59,10 @@ Route::group([
 });
 
 Route::group([
-    'prefix'        => 'controle/',
-    'middleware'    => ['web', 'auth:sanctum', 'verified'],
-    'as'            => 'controle.'
-] ,function () {
+    'prefix' => 'controle/',
+    'middleware' => ['web', 'auth:sanctum', 'verified'],
+    'as' => 'controle.',
+], function () {
 
     /*--------------------------------------------------------------------------
     | Rotas para configurações

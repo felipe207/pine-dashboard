@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Models;
+namespace Brediweb\BrediDashboard\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,7 +16,7 @@ class Config extends Model
 
     public function getBackgroundAttribute()
     {
-        if(isset($this->config['layout']['background_image']) and !empty($this->config['layout']['background_image'])){
+        if (isset($this->config['layout']['background_image']) and !empty($this->config['layout']['background_image'])) {
             return route('imagem.render', config('BrediDashboard.background_image.destino') . $this->config['layout']['background_image']);
         } else {
             return '/coloradmin/images/login-bg-17.jpg';
@@ -24,7 +24,7 @@ class Config extends Model
     }
     public function getLogoAttribute()
     {
-        if(isset($this->config['layout']['logo']) and !empty($this->config['layout']['logo'])){
+        if (isset($this->config['layout']['logo']) and !empty($this->config['layout']['logo'])) {
             return route('imagem.render', 'company/p/' . $this->config['layout']['logo']);
         } else {
             return null;

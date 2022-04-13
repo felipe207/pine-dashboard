@@ -1,9 +1,9 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Providers;
+namespace Brediweb\BrediDashboard\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
 
 class BrediColorAdminServiceProvider extends ServiceProvider
 {
@@ -32,11 +32,11 @@ class BrediColorAdminServiceProvider extends ServiceProvider
 
     public function getConfig()
     {
-        $this->app->booted(function() {
+        $this->app->booted(function () {
             try {
                 if (Schema::hasTable('configs')) {
-                    $config = (new \Brediweb\BrediDashboard8\Repositories\BrediDashboardRepository)->getConfig();
-                    view()->composer('*', function($view) use($config) {
+                    $config = (new \Brediweb\BrediDashboard\Repositories\BrediDashboardRepository)->getConfig();
+                    view()->composer('*', function ($view) use ($config) {
                         return $view->with('config', $config);
                     });
                 }
@@ -64,13 +64,13 @@ class BrediColorAdminServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('bredicoloradmin.php'),
+            __DIR__ . '/../Config/config.php' => config_path('bredicoloradmin.php'),
         ], 'config');
         $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('bredicoloradmin.php'),
+            __DIR__ . '/../Config/config.php' => config_path('bredicoloradmin.php'),
         ], 'dashboard-config');
         $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'bredicoloradmin'
+            __DIR__ . '/../Config/config.php', 'bredicoloradmin'
         );
     }
 
@@ -83,19 +83,19 @@ class BrediColorAdminServiceProvider extends ServiceProvider
     {
         $viewPath = resource_path('views/vendor/bredicoloradmin'); //destino views
 
-        $sourcePath = __DIR__.'/../Resources/views'; //origem views
+        $sourcePath = __DIR__ . '/../Resources/views'; //origem views
 
         $this->publishes([
-            $sourcePath => $viewPath
-        ],'dashboard-views');
+            $sourcePath => $viewPath,
+        ], 'dashboard-views');
 
         $this->publishes([
-            $sourcePath . '/includes/menu.blade.php' => $viewPath . '/includes/menu.blade.php'
-        ],'dashboard-menu');
+            $sourcePath . '/includes/menu.blade.php' => $viewPath . '/includes/menu.blade.php',
+        ], 'dashboard-menu');
 
         $this->publishes([
-            $sourcePath => $viewPath
-        ],'views');
+            $sourcePath => $viewPath,
+        ], 'views');
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/vendor/bredicoloradmin';
@@ -105,20 +105,20 @@ class BrediColorAdminServiceProvider extends ServiceProvider
     public function publishAssets()
     {
         $this->publishes([
-            __DIR__.'/../Public/webfonts' => public_path('coloradmin/webfonts'),
-            __DIR__.'/../Public/tinymce' => public_path('tinymce'),
-            __DIR__.'/../Public/images' => public_path('coloradmin/images'),
-            __DIR__.'/../Public/js' => public_path('coloradmin/js'),
-            __DIR__.'/../Public/css' => public_path('coloradmin/css'),
-            __DIR__.'/../Public/plugins' => public_path('plugins'),
+            __DIR__ . '/../Public/webfonts' => public_path('coloradmin/webfonts'),
+            __DIR__ . '/../Public/tinymce' => public_path('tinymce'),
+            __DIR__ . '/../Public/images' => public_path('coloradmin/images'),
+            __DIR__ . '/../Public/js' => public_path('coloradmin/js'),
+            __DIR__ . '/../Public/css' => public_path('coloradmin/css'),
+            __DIR__ . '/../Public/plugins' => public_path('plugins'),
         ], 'public-assets');
 
-         $this->publishes([
-            __DIR__.'/../Public/tinymce' => public_path('tinymce'),
+        $this->publishes([
+            __DIR__ . '/../Public/tinymce' => public_path('tinymce'),
         ], 'editor-tinymce');
 
         $this->publishes([
-            __DIR__.'/../Public/summernote' => public_path('summernote'),
+            __DIR__ . '/../Public/summernote' => public_path('summernote'),
         ], 'editor-summernote');
     }
     /**
@@ -133,7 +133,7 @@ class BrediColorAdminServiceProvider extends ServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, 'bredicoloradmin');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'bredicoloradmin');
+            $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'bredicoloradmin');
         }
     }
 

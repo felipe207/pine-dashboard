@@ -1,15 +1,14 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Http\Controllers;
+namespace Brediweb\BrediDashboard\Http\Controllers;
 
-use Brediweb\BrediDashboard8\Http\Requests\UpdateUsuarioRequest;
-use Brediweb\BrediDashboard8\Models\User;
+use Brediweb\BrediDashboard\Models\User;
+use Brediweb\ImagemUpload\ImagemUpload;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Hash;
-use Brediweb\Imagemupload8\ImagemUpload;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -46,7 +45,7 @@ class ProfileController extends Controller
 
             $input = array_filter($request->all());
 
-            if(isset($input['actual_password']) and !$this->oldPasswordValid($input)) {
+            if (isset($input['actual_password']) and !$this->oldPasswordValid($input)) {
                 return redirect()->back()->withInput()->with('error', true)->with('msg', 'A senha atual é inválida!');
             }
 
@@ -54,7 +53,7 @@ class ProfileController extends Controller
                 'input_file' => 'imagem',
                 'destino' => 'user/',
                 'resolucao' => ['m' => ['h' => 500, 'w' => 500], 'p' => ['h' => 150, 'w' => 150]],
-                'preencher' =>['p'],
+                'preencher' => ['p'],
             ]);
 
             if ($imagens) {

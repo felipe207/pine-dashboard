@@ -1,13 +1,13 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Http\Controllers;
+namespace Brediweb\BrediDashboard\Http\Controllers;
 
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Routing\Controller;
-use Brediweb\BrediDashboard8\Http\Requests\UsuarioStoreRequest;
-use Brediweb\BrediDashboard8\Http\Requests\UsuarioUpdateRequest;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Brediweb\BrediDashboard\Http\Requests\UsuarioStoreRequest;
+use Brediweb\BrediDashboard\Http\Requests\UsuarioUpdateRequest;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class UsuarioController extends Controller
@@ -22,7 +22,7 @@ class UsuarioController extends Controller
     {
         $data = ['roles'];
 
-    	$roles = Role::pluck('name','name')->all();
+        $roles = Role::pluck('name', 'name')->all();
 
         return view('controle.usuario.form', compact($data));
     }
@@ -34,8 +34,8 @@ class UsuarioController extends Controller
             $user = User::create([
                 'name' => $request->input('name'),
                 'grupo_usuario_id' => $request->input('grupo_usuario_id'),
-                'email'  => $request->input('email'),
-                'password' => Hash::make($request->input('password'))
+                'email' => $request->input('email'),
+                'password' => Hash::make($request->input('password')),
             ]);
 
             $user->assignRole($request->input('roles'));
@@ -54,8 +54,7 @@ class UsuarioController extends Controller
         if ($user->id != Auth::user()->id) {
             $user->delete();
             return redirect()->route('controle.usuario.index')->with('msg', 'Operação realizada com sucesso')->with('error', false);
-        }else
-        {
+        } else {
             return redirect()->route('controle.usuario.index')->with('msg', 'Não foi possível efetuar a operação')->with('error', true);
         }
 
@@ -63,9 +62,9 @@ class UsuarioController extends Controller
 
     public function edit($id)
     {
-        $data = ['roles','user'];
+        $data = ['roles', 'user'];
 
-    	$roles = Role::pluck('name','name')->all();
+        $roles = Role::pluck('name', 'name')->all();
         $user = User::find($id);
 
         return view('controle.usuario.form', compact($data));
@@ -76,13 +75,12 @@ class UsuarioController extends Controller
 
         try {
             if ($request->only('password')['password'] == null) {
-                $input = $request->except('password','password_confirmation');
-            }else{
+                $input = $request->except('password', 'password_confirmation');
+            } else {
                 $input = $request->all();
 
                 $input['password'] = Hash::make($request->input('password'));
             }
-
 
             $user = User::findOrFail($id);
 
@@ -91,16 +89,16 @@ class UsuarioController extends Controller
             $user->syncRoles($request->input('roles'));
 
             return redirect()
-                    ->route('controle.usuario.index')
-                    ->with('msg', 'Operação realizada com sucesso.')
-                    ->with('error', false);
+                ->route('controle.usuario.index')
+                ->with('msg', 'Operação realizada com sucesso.')
+                ->with('error', false);
 
         } catch (\Throwable $th) {
             dd($th);
             return redirect()
-                    ->route('controle.usuario.index')
-                    ->with('msg', 'Falha na operação.')
-                    ->with('error', true);
+                ->route('controle.usuario.index')
+                ->with('msg', 'Falha na operação.')
+                ->with('error', true);
         }
     }
 }
