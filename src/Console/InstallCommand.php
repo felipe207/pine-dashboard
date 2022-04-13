@@ -130,6 +130,7 @@ class InstallCommand extends Command
     protected function routeExemplo()
     {
         return <<<'EOF'
+        
         Route::group([
             'prefix'        => 'controle/',
             'middleware'    => ['web', 'auth:sanctum', 'verified'],
