@@ -7,9 +7,13 @@
 	<div class="login login-with-news-feed">
 		<!-- begin news-feed -->
 		<div class="news-feed">
+			@if (isset($config->config['layout']['background_image']))
 			<div class="news-image text-white"
-			style="background-image: url({{ asset('storage/background_image/'.$config->config['layout']['background_image']) }})">
+			style="background-image: url({{ route('imagem.render', "background_image/". $config->config['layout']['background_image']) }})">
 			</div>
+			@else
+			<div class="news-image text-white"></div>
+			@endif
 			<div class="news-caption">
 				<h4 class="caption-title"><b>Painel</b> Administrativo</h4>
 				<p>
@@ -23,7 +27,7 @@
 			<!-- begin login-header -->
 			<div class="login-header">
 				<div class="brand">
-					<b>{{ $config->nome }}</b> - Controle
+					<div style="width: 80%"><b>{{ $config->nome }}</b> | Controle</div>
 					{{-- <small>Administre com fluidez e velocidade</small> --}}
 				</div>
 				<div class="icon">
@@ -59,7 +63,7 @@
 					</div>
 					<hr />
 					<p class="text-center text-grey-darker mb-0">
-						&copy; Painel Administrativo todos os direitos reservados 2021
+						&copy; Painel Administrativo todos os direitos reservados {{ date('Y') }}
 					</p>
 				</form>
 			</div>

@@ -50,5 +50,6 @@
 	</div>
 
 	@include('controle.includes.page-js')
+	@yield('scripts')
 </body>
 </html>

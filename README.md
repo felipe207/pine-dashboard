@@ -1,4 +1,4 @@
-# bredi-dashboard-8
+# bredi-dashboard v8
 Pacote dashboard para projetos Laravel 8
 
 ## Instruções de uso
@@ -7,8 +7,8 @@ Pacote dashboard para projetos Laravel 8
 
 Em require:
 ```json
-"brediweb/bredi-dashboard-8": "dev-main",
-"brediweb/imagemupload-8": "dev-main",
+"brediweb/bredi-dashboard": "8.x",
+"brediweb/imagemupload": "8.x",
 ```
 
 Ao final do arquivo, adicione:
@@ -16,11 +16,11 @@ Ao final do arquivo, adicione:
 "repositories": [
     {
         "type": "vcs",
-        "url": "https://github.com/brediweb/imagem-upload-8"
+        "url": "https://github.com/brediweb/imagem-upload"
     },
     {
         "type": "vcs",
-        "url": "https://github.com/brediweb/bredi-dashboard-8"
+        "url": "https://github.com/brediweb/bredi-dashboard"
     }
 ]
 ```
