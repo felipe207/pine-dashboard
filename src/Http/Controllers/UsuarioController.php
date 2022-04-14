@@ -1,11 +1,11 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Http\Controllers;
+namespace Brediweb\BrediDashboard\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Routing\Controller;
-use Brediweb\BrediDashboard8\Http\Requests\UsuarioStoreRequest;
-use Brediweb\BrediDashboard8\Http\Requests\UsuarioUpdateRequest;
+use Brediweb\BrediDashboard\Http\Requests\UsuarioStoreRequest;
+use Brediweb\BrediDashboard\Http\Requests\UsuarioUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Spatie\Permission\Models\Role;

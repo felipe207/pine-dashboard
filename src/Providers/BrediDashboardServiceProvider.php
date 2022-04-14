@@ -1,9 +1,9 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Providers;
+namespace Brediweb\BrediDashboard\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Brediweb\BrediDashboard8\Console\InstallCommand;
+use Brediweb\BrediDashboard\Console\InstallCommand;
 
 class BrediDashboardServiceProvider extends ServiceProvider
 {

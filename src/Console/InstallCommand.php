@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Console;
+namespace Brediweb\BrediDashboard\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -111,7 +111,7 @@ class InstallCommand extends Command
         $fortify_service_provider = str_replace('Fortify::resetUserPasswordsUsing(ResetUserPassword::class);', 'Fortify::resetUserPasswordsUsing(ResetUserPassword::class);'.PHP_EOL.'
         $this->app->singleton(
             \Laravel\Fortify\Contracts\LogoutResponse::class,
-            \Brediweb\BrediDashboard8\Http\Responses\LogoutResponse::class
+            \Brediweb\BrediDashboard\Http\Responses\LogoutResponse::class
         );', $fortify_service_provider);
         $this->files->put(app_path('Providers').DIRECTORY_SEPARATOR.'FortifyServiceProvider.php', $fortify_service_provider);
 

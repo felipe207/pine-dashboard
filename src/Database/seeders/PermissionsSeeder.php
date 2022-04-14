@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Database\seeders;
+namespace Brediweb\BrediDashboard\Database\seeders;
 
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;

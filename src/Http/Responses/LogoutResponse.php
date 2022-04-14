@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Http\Responses;
+namespace Brediweb\BrediDashboard\Http\Responses;
 
 use Illuminate\Http\Response;
 use Laravel\Fortify\Contracts\LogoutResponse as LogoutResponseContract;

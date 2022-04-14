@@ -1,12 +1,12 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Http\Controllers;
+namespace Brediweb\BrediDashboard\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Brediweb\Imagemupload8\ImagemUpload;
-use Brediweb\BrediDashboard8\Models\Config;
+use Brediweb\ImagemUpload\ImagemUpload;
+use Brediweb\BrediDashboard\Models\Config;
 
 class ConfigController extends Controller
 {

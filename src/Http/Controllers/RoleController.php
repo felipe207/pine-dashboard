@@ -1,9 +1,9 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Http\Controllers;
+namespace Brediweb\BrediDashboard\Http\Controllers;
 
-use Brediweb\BrediDashboard8\Http\Requests\RoleStoreRequest;
-use Brediweb\BrediDashboard8\Http\Requests\RoleUpdateRequest;
+use Brediweb\BrediDashboard\Http\Requests\RoleStoreRequest;
+use Brediweb\BrediDashboard\Http\Requests\RoleUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Spatie\Permission\Models\Role;

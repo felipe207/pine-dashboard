@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Database\factories;
+namespace Brediweb\BrediDashboard\Database\factories;
 
 use App\Models\Team;
 use App\Models\User;

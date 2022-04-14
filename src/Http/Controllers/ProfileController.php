@@ -1,14 +1,14 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Http\Controllers;
+namespace Brediweb\BrediDashboard\Http\Controllers;
 
-use Brediweb\BrediDashboard8\Http\Requests\UpdateUsuarioRequest;
-use Brediweb\BrediDashboard8\Models\User;
+use Brediweb\BrediDashboard\Http\Requests\UpdateUsuarioRequest;
+use Brediweb\BrediDashboard\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
-use Brediweb\Imagemupload8\ImagemUpload;
+use Brediweb\ImagemUpload\ImagemUpload;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller

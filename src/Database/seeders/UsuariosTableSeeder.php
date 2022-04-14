@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Database\seeders;
+namespace Brediweb\BrediDashboard\Database\seeders;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
