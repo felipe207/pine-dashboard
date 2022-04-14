@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Policies;
+namespace Brediweb\BrediDashboard\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 

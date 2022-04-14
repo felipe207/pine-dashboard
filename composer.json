@@ -1,5 +1,5 @@
 {
-    "name": "brediweb/bredi-dashboard-8",
+    "name": "brediweb/bredi-dashboard",
     "description": "Pacote dashboard para laravel 8",
     "license": "MIT",
     "authors": [
@@ -11,15 +11,15 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Brediweb\\BrediDashboard8\\Providers\\BrediDashboardServiceProvider",
-                "Brediweb\\BrediDashboard8\\Providers\\BrediColorAdminServiceProvider"
+                "Brediweb\\BrediDashboard\\Providers\\BrediDashboardServiceProvider",
+                "Brediweb\\BrediDashboard\\Providers\\BrediColorAdminServiceProvider"
             ],
             "aliases": {}
         }
     },
     "autoload": {
         "psr-4": {
-            "Brediweb\\BrediDashboard8\\": "src/"
+            "Brediweb\\BrediDashboard\\": "src/"
         },
         "files": ["src/Http/Helper/Helper.php"]
     },

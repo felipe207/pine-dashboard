@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Providers;
+namespace Brediweb\BrediDashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
@@ -35,7 +35,7 @@ class BrediColorAdminServiceProvider extends ServiceProvider
         $this->app->booted(function() {
             try {
                 if (Schema::hasTable('configs')) {
-                    $config = (new \Brediweb\BrediDashboard8\Repositories\BrediDashboardRepository)->getConfig();
+                    $config = (new \Brediweb\BrediDashboard\Repositories\BrediDashboardRepository)->getConfig();
                     view()->composer('*', function($view) use($config) {
                         return $view->with('config', $config);
                     });

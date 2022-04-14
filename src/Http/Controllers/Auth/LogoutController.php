@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Http\Controllers\Auth;
+namespace Brediweb\BrediDashboard\Http\Controllers\Auth;
 
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Brediweb\BrediDashboard8\Models;
+namespace Brediweb\BrediDashboard\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

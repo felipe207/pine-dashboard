@@ -1,10 +1,10 @@
 <?php
 
-use Brediweb\BrediDashboard8\Http\Controllers\ConfigController;
+use Brediweb\BrediDashboard\Http\Controllers\ConfigController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
-use Brediweb\BrediDashboard8\Http\Controllers\UsuarioController;
-use Brediweb\BrediDashboard8\Http\Controllers\RoleController;
-use Brediweb\BrediDashboard8\Http\Controllers\ProfileController;
+use Brediweb\BrediDashboard\Http\Controllers\UsuarioController;
+use Brediweb\BrediDashboard\Http\Controllers\RoleController;
+use Brediweb\BrediDashboard\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\EmailVerificationPromptController;
 
